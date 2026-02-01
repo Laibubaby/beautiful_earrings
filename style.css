@@ -1,0 +1,36 @@
+function moveButton() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+    const noBtn = document.getElementById('noButton');
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+}
+
+function celebrate() {
+    // 1. Play the music
+    const music = document.getElementById('proposalMusic');
+    music.play();
+
+    // 2. Change the text
+    document.getElementById('proposal-box').innerHTML = "<h1>Yay! I love you! See you on the 14th! 🌹✨</h1>";
+
+    // 3. REVEAL THE PHOTOS
+    const gallery = document.getElementById('secret-gallery');
+    gallery.style.display = "block";
+
+    // 4. Launch Heart Confetti
+    for (let i = 0; i < 50; i++) {
+        setTimeout(createHeart, i * 100);
+    }
+}
+
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
